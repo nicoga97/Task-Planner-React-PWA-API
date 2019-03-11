@@ -6,15 +6,18 @@ import eci.ieti.taskplannerAPI.Model.User;
 import java.util.List;
 
 public interface TaskService {
+
+    Task createTask(Task task);
+
     List<Task> geTasksList();
 
-    Task getTaskById(String id);
+    Task getTaskById(String id) throws TaskPlannerServiceException;
 
     List<Task> getTasksByUserId(String userId);
 
-    Task assignTaskToUser(String taskId, User user);
+    Task assignTaskToUser(String taskId, User user) throws TaskPlannerServiceException;
 
     void removeTask(String taskId);
 
-    Task updateTask(Task task);
+    Task updateTask(Task task) throws TaskPlannerServiceException;
 }

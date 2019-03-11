@@ -6,11 +6,11 @@ import java.util.List;
 public interface UserService {
     List<User> getUsersList();
 
-    User getUserById(String userId);
+    User getUserById(String userId) throws TaskPlannerServiceException;
 
     User createUser(User user);
 
-    User updateUser(User user);
+    User updateUser(User user) throws TaskPlannerServiceException;
 
     void removeUser(String userId);
 }
