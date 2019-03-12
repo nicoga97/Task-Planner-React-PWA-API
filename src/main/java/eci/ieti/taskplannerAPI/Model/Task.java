@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Task {
     private String id;
-    private LocalDate deuDate;
+    private LocalDate dueDate;
     private User responsible;
     private String status;
     private String description;
@@ -12,23 +12,23 @@ public class Task {
     public static String IN_PROGRESS = "In Progress";
     public static String DONE = "Done";
 
-    public Task(LocalDate deuDate, User responsible, String status, String description) {
-        this.deuDate = deuDate;
+    public Task(LocalDate dueDate, User responsible, String status, String description) {
+        this.dueDate = dueDate;
         this.responsible = responsible;
         this.status = status;
         this.description = description;
     }
 
-    public Task(String id, LocalDate deuDate, User responsible, String status, String description) {
+    public Task(String id, LocalDate dueDate, User responsible, String status, String description) {
         this.id = id;
-        this.deuDate = deuDate;
+        this.dueDate = dueDate;
         this.responsible = responsible;
         this.status = status;
         this.description = description;
     }
 
-    public Task(LocalDate deuDate, String status, String description) {
-        this.deuDate = deuDate;
+    public Task(LocalDate dueDate, String status, String description) {
+        this.dueDate = dueDate;
         this.status = status;
         this.description = description;
     }
@@ -45,8 +45,8 @@ public class Task {
         return responsible;
     }
 
-    public LocalDate getDeuDate() {
-        return deuDate;
+    public LocalDate getDueDate() {
+        return dueDate;
     }
 
     public String getStatus() {
