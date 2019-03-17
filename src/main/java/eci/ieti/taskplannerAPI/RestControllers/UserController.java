@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @CrossOrigin(origins = "https://task-planner-d38da.firebaseapp.com")
+    @CrossOrigin(origins = "*")
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Token login(@RequestBody User login)

@@ -18,7 +18,7 @@ public class TaskController {
     @Autowired
     private UserService userService;
 
-    @CrossOrigin(origins = "https://task-planner-d38da.firebaseapp.com")
+    @CrossOrigin(origins = "*")
     @GetMapping("/tasks")
     public ResponseEntity<?> getTasksHandler() {
         try {
