@@ -1,6 +1,7 @@
 package eci.ieti.taskplannerAPI.Services;
 
 import eci.ieti.taskplannerAPI.Model.User;
+
 import java.util.List;
 
 public interface UserService {
@@ -13,4 +14,6 @@ public interface UserService {
     User updateUser(User user) throws TaskPlannerServiceException;
 
     void removeUser(String userId);
+
+    User getUser(String username, String password);
 }

@@ -1,34 +1,83 @@
 package eci.ieti.taskplannerAPI.Model;
 
 public class User {
-    private String name;
-    private String eMail;
-    private String id;
 
-    public User(String name, String eMail, String id) {
-        this.name = name;
-        this.eMail = eMail;
-        this.id = id;
+    private long id;
+
+    private String email;
+
+    private String password;
+
+    private String firstname;
+
+    private String lastname;
+
+    private String username;
+
+
+    public User() {
     }
 
-    public User(String name, String eMail) {
-        this.name = name;
-        this.eMail = eMail;
+    public User(String email, String userName, String password, String firstname, String lastname) {
+        this.username = userName;
+        this.email = email;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public String geteMail() {
-        return eMail;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", email='" + email + '\'' + ", password='" + password + '\'' + ", firstname='"
+                + firstname + '\'' + '}';
     }
 }

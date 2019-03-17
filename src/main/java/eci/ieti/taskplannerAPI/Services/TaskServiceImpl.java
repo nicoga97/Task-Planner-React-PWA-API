@@ -6,25 +6,24 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
-public class TaskServiceStub implements TaskService {
+public class TaskServiceImpl implements TaskService {
     private  List<Task> taskList;
 
-    public TaskServiceStub() {
+    public TaskServiceImpl() {
 
         this.taskList = new ArrayList<>();
-        taskList.add(new Task("1", LocalDate.of(2019,1,15),new User("Nicolas Garcia","nicoga97@gmail.com","1"),Task.IN_PROGRESS,"Make backEnd"));
-        taskList.add(new Task("2", LocalDate.of(2019,2,5),new User("Andres Perez","andres@gmail.com","2"),Task.DONE,"Make FrontEnd"));
-        taskList.add(new Task("3", LocalDate.of(2019,2,20),new User("Andres Perez","andres@gmail.com","2"),Task.IN_PROGRESS,"Design an API rest service"));
-        taskList.add(new Task("4", LocalDate.of(2019,1,21),new User("Camilo Fajardo","camilo@gmail.com","3"),Task.READY,"Make sprint planning"));
+        taskList.add(new Task("1", LocalDate.of(2019, 1, 15), new User("nicoga97@gmail.com", "user1", "password", "Nicolas", " Garcia"), Task.IN_PROGRESS, "Make backEnd"));
+        taskList.add(new Task("2", LocalDate.of(2019, 2, 5), new User("andres@gmail.com", "user2", "password", "Andres", " Perez"), Task.DONE, "Make FrontEnd"));
+        taskList.add(new Task("3", LocalDate.of(2019, 2, 20), new User("andres@gmail.com", "user2", "password", "Andres", " Perez"), Task.IN_PROGRESS, "Design an API rest service"));
+        taskList.add(new Task("4", LocalDate.of(2019, 1, 21), new User("camilo@gmail.com", "user3", "password", "Camilo", "Fajardo"), Task.READY, "Make sprint planning"));
     }
 
     @Override
     public Task createTask(Task task) {
-        task.setId(Integer.toString(taskList.size()+1));
+        task.setId(Long.toString(taskList.size() + 1));
         taskList.add(task);
         return task;
     }
@@ -49,7 +48,7 @@ public class TaskServiceStub implements TaskService {
     public List<Task> getTasksByUserId(String userId) {
         List<Task> userTasks=new ArrayList<>();
         for(Task task:taskList){
-            if(task.getResponsible().getId().equals(userId)){
+            if (task.getResponsible().getId() == Long.parseLong(userId)) {
                userTasks.add(task);
             }
         }
