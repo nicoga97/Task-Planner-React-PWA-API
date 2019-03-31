@@ -37,13 +37,13 @@ public class UserController {
         User user = service.getUser(email, password);
 
         if (user == null) {
-            throw new ServletException("User username not found.");
+            throw new ServletException("User email not found.");
         }
 
         String pwd = user.getPassword();
 
         if (!password.equals(pwd)) {
-            throw new ServletException("Invalid login. Please check your name and password.");
+            throw new ServletException("Invalid login. Please check your email and password.");
         }
         //
         jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date()).signWith(

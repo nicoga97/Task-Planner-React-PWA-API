@@ -37,7 +37,6 @@ public class TaskPlannerApiApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
         System.out.println("-------------------------------");
         for (User usr : userRepository.findAll()) {
             System.out.println(usr);

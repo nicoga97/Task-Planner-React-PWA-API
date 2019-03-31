@@ -49,8 +49,12 @@ public class UserServiceMongoDBImpl implements UserService {
     public User getUser(String email, String password) {
         List<User> users = userRepository.findAll();
         User user = null;
+        for (User u : users) {
+            System.out.println(u);
+        }
+
         for (User usr : users) {
-            if (email.equals(user.getEmail()) && password.equals(usr.getPassword())) {
+            if (email.equals(usr.getEmail()) && password.equals(usr.getPassword())) {
                 user = usr;
             }
         }
