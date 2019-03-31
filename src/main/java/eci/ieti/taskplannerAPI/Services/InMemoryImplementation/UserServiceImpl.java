@@ -1,6 +1,8 @@
-package eci.ieti.taskplannerAPI.Services;
+package eci.ieti.taskplannerAPI.Services.InMemoryImplementation;
 
 import eci.ieti.taskplannerAPI.Model.User;
+import eci.ieti.taskplannerAPI.Services.TaskPlannerServiceException;
+import eci.ieti.taskplannerAPI.Services.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,9 +14,9 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl() {
         users=new ArrayList<>();
-        users.add(new User("nicoga97@gmail.com", "user1", "password", "Nicolas", " Garcia"));
-        users.add(new User("andres@gmail.com", "user2", "password", "Andres", " Perez"));
-        users.add(new User("camilo@gmail.com", "user3", "password", "Camilo", "Fajardo"));
+        users.add(new User("nicoga97@gmail.com", "password", "Nicolas"));
+        users.add(new User("andres@gmail.com", "password", "Andres"));
+        users.add(new User("camilo@gmail.com", "password", "Camilo"));
     }
 
     @Override
@@ -23,9 +25,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(String userId) throws TaskPlannerServiceException {
+    public User getUserByEmail(String email) throws TaskPlannerServiceException {
         for(User user:users){
-            if (user.getId() == Long.parseLong(userId)) {
+            if (user.getEmail().equals(email)) {
                 return user;
             }
         }
@@ -34,7 +36,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
-        user.setId(users.size() + 1);
         users.add(user);
         return user;
     }
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateUser(User user) throws TaskPlannerServiceException {
         for(User user1:users){
-            if (user1.getId() == user.getId()) {
+            if (user1.getEmail().equals(user.getEmail())) {
                 user1=user;
                 return user1;
             }
@@ -51,19 +52,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void removeUser(String userId) {
+    public void removeUser(String email) {
         for(User user:users){
-            if (user.getId() == Long.parseLong(userId)) {
+            if (user.getEmail().equals(email)) {
                 users.remove(user);
             }
         }
     }
 
     @Override
-    public User getUser(String username, String password) {
+    public User getUser(String email, String password) {
         User usr = null;
         for (User user : users) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 usr = user;
             }
         }

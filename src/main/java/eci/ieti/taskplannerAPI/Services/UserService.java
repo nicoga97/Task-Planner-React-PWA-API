@@ -7,13 +7,13 @@ import java.util.List;
 public interface UserService {
     List<User> getUsersList();
 
-    User getUserById(String userId) throws TaskPlannerServiceException;
+    User getUserByEmail(String email) throws TaskPlannerServiceException;
 
     User createUser(User user);
 
     User updateUser(User user) throws TaskPlannerServiceException;
 
-    void removeUser(String userId);
+    void removeUser(String email);
 
-    User getUser(String username, String password);
+    User getUser(String email, String password);
 }

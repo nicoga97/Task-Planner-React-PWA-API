@@ -1,39 +1,38 @@
 package eci.ieti.taskplannerAPI.Model;
 
+
 public class User {
 
-    private long id;
 
     private String email;
 
     private String password;
 
-    private String firstname;
-
-    private String lastname;
-
-    private String username;
-
+    private String name;
 
     public User() {
     }
 
-    public User(String email, String userName, String password, String firstname, String lastname) {
-        this.username = userName;
+    public User(String email, String password, String name) {
         this.email = email;
         this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.name = name;
+    }
+
+    public User(String email, String name) {
+        this.email = email;
+        this.name = name;
     }
 
 
-    public long getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
+
 
     public String getEmail() {
         return email;
@@ -51,33 +50,12 @@ public class User {
         this.password = password;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", email='" + email + '\'' + ", password='" + password + '\'' + ", firstname='"
-                + firstname + '\'' + '}';
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

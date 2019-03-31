@@ -1,7 +1,9 @@
-package eci.ieti.taskplannerAPI.Services;
+package eci.ieti.taskplannerAPI.Services.InMemoryImplementation;
 
 import eci.ieti.taskplannerAPI.Model.Task;
 import eci.ieti.taskplannerAPI.Model.User;
+import eci.ieti.taskplannerAPI.Services.TaskPlannerServiceException;
+import eci.ieti.taskplannerAPI.Services.TaskService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -15,10 +17,10 @@ public class TaskServiceImpl implements TaskService {
     public TaskServiceImpl() {
 
         this.taskList = new ArrayList<>();
-        taskList.add(new Task("1", LocalDate.of(2019, 1, 15), new User("nicoga97@gmail.com", "user1", "password", "Nicolas", " Garcia"), Task.IN_PROGRESS, "Make backEnd"));
-        taskList.add(new Task("2", LocalDate.of(2019, 2, 5), new User("andres@gmail.com", "user2", "password", "Andres", " Perez"), Task.DONE, "Make FrontEnd"));
-        taskList.add(new Task("3", LocalDate.of(2019, 2, 20), new User("andres@gmail.com", "user2", "password", "Andres", " Perez"), Task.IN_PROGRESS, "Design an API rest service"));
-        taskList.add(new Task("4", LocalDate.of(2019, 1, 21), new User("camilo@gmail.com", "user3", "password", "Camilo", "Fajardo"), Task.READY, "Make sprint planning"));
+        taskList.add(new Task("1", LocalDate.of(2019, 1, 15), new User("nicoga97@gmail.com", "user1", "andres"), Task.IN_PROGRESS, "Make backEnd"));
+        taskList.add(new Task("2", LocalDate.of(2019, 2, 5), new User("andres@gmail.com", "password", "Andres"), Task.DONE, "Make FrontEnd"));
+        taskList.add(new Task("3", LocalDate.of(2019, 2, 20), new User("andres@gmail.com", "password", "Andres"), Task.IN_PROGRESS, "Design an API rest service"));
+        taskList.add(new Task("4", LocalDate.of(2019, 1, 21), new User("camilo@gmail.com", "password", "Fajardo"), Task.READY, "Make sprint planning"));
     }
 
     @Override
@@ -45,10 +47,10 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> getTasksByUserId(String userId) {
+    public List<Task> getTasksByUserEmail(String email) {
         List<Task> userTasks=new ArrayList<>();
         for(Task task:taskList){
-            if (task.getResponsible().getId() == Long.parseLong(userId)) {
+            if (task.getResponsible().getEmail().equals(email)) {
                userTasks.add(task);
             }
         }

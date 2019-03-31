@@ -41,11 +41,11 @@ public class TaskController {
         }
     }
 
-    @GetMapping("tasks/byUser/{userId}")
-    public ResponseEntity<?> getTasksByUserIdHandler(@PathVariable("userId") String userId) {
+    @GetMapping("tasks/byUser/{email}")
+    public ResponseEntity<?> getTasksByUserIdHandler(@PathVariable("email") String email) {
         try {
 
-            return new ResponseEntity<>(taskService.getTasksByUserId(userId), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(taskService.getTasksByUserEmail(email), HttpStatus.ACCEPTED);
         } catch (Exception ex) {
 
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
@@ -116,10 +116,10 @@ public class TaskController {
         }
     }
 
-    @DeleteMapping("users/{id}")
-    public ResponseEntity<?> deleteUserHandler(@PathVariable String id) {
+    @DeleteMapping("users/{email}")
+    public ResponseEntity<?> deleteUserHandler(@PathVariable String email) {
         try {
-            userService.removeUser(id);
+            userService.removeUser(email);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception ex) {
 
