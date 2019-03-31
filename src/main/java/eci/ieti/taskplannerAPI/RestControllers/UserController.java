@@ -15,12 +15,12 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("user")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
     private UserService service;
 
-    @CrossOrigin(origins = "*")
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Token login(@RequestBody User login)

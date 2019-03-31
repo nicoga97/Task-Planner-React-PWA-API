@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api")
+@CrossOrigin(origins = "*")
 public class TaskController {
 
     @Autowired
@@ -20,7 +21,7 @@ public class TaskController {
 
     private UserService userService;
 
-    @CrossOrigin(origins = "*")
+
     @GetMapping("/tasks")
     public ResponseEntity<?> getTasksHandler() {
         try {
