@@ -15,7 +15,7 @@ public interface TaskService {
 
     List<Task> getTasksByUserEmail(String email);
 
-    Task assignTaskToUser(String email, User user) throws TaskPlannerServiceException;
+    Task assignTaskToUser(String taskId, User user) throws TaskPlannerServiceException;
 
     void removeTask(String taskId);
 

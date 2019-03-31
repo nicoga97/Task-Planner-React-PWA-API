@@ -71,6 +71,10 @@ public class TaskPlannerApiApplication implements CommandLineRunner {
             System.out.println(usr);
         }
         System.out.println("-------------------------------");
+        for (User usr : userRepository.findAllWithoutPsw()) {
+            System.out.println(usr);
+        }
+        System.out.println("-------------------------------");
         for (Task Task : taskRepository.findTasksWithLargeDescription()) {
             System.out.println(Task);
         }

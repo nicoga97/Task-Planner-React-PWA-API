@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface TaskRepository extends MongoRepository<Task, String> {
     Task findByResponsible(String responsible);
-
     @Query("{'dueDate':{$lt: ?0}}")
     List<Task> findExpiredTasks(LocalDate date);
 
@@ -18,6 +17,13 @@ public interface TaskRepository extends MongoRepository<Task, String> {
 
     @Query("{$where: 'this.description.length > 30'}")
     List<Task> findTasksWithLargeDescription();
+
+    @Query("{'responsible':{'email':{$eq: ?0}}}")
+    List<Task> findTasksByResponsibleEmail(String email);
+
+
+
+
 
 
 }
