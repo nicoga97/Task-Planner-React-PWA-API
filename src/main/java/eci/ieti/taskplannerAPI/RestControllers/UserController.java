@@ -49,16 +49,26 @@ public class UserController {
         jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date()).signWith(
                 SignatureAlgorithm.HS256, "secretkey").compact();
 
-        return new Token(jwtToken);
+        user.setPassword(null);
+        return new Token(jwtToken, user);
     }
 
     public class Token {
 
         String accessToken;
+        User user;
 
-
-        public Token(String accessToken) {
+        public Token(String accessToken, User user) {
             this.accessToken = accessToken;
+            this.user = user;
+        }
+
+        public User getUser() {
+            return user;
+        }
+
+        public void setUser(User user) {
+            this.user = user;
         }
 
 

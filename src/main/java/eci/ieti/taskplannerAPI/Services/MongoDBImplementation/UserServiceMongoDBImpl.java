@@ -29,6 +29,7 @@ public class UserServiceMongoDBImpl implements UserService {
 
     @Override
     public User createUser(User user) {
+        System.out.println(user);
         userRepository.save(user);
         return user;
     }
