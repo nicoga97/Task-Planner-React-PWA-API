@@ -4,6 +4,7 @@ import eci.ieti.taskplannerAPI.Model.User;
 import eci.ieti.taskplannerAPI.Services.TaskPlannerServiceException;
 import eci.ieti.taskplannerAPI.Services.UserService;
 import eci.ieti.taskplannerAPI.data.UserRepository;
+import eci.ieti.taskplannerAPI.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class UserServiceMongoDBImpl implements UserService {
 
     @Override
     public User createUser(User user) {
-        System.out.println(user);
+        user.setPassword(StringUtils.getMD5Hash(user.getPassword()));
         userRepository.save(user);
         return user;
     }
@@ -47,15 +48,12 @@ public class UserServiceMongoDBImpl implements UserService {
     }
 
     @Override
-    public User getUser(String email, String password) {
+    public User getUser(String email) {
         List<User> users = userRepository.findAll();
         User user = null;
-        for (User u : users) {
-            System.out.println(u);
-        }
 
         for (User usr : users) {
-            if (email.equals(usr.getEmail()) && password.equals(usr.getPassword())) {
+            if (email.equals(usr.getEmail())) {
                 user = usr;
             }
         }

@@ -62,10 +62,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(String email, String password) {
+    public User getUser(String email) {
         User usr = null;
         for (User user : users) {
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+            if (user.getEmail().equals(email)) {
                 usr = user;
             }
         }

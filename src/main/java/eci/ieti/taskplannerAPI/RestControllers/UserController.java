@@ -3,6 +3,7 @@ package eci.ieti.taskplannerAPI.RestControllers;
 
 import eci.ieti.taskplannerAPI.Model.User;
 import eci.ieti.taskplannerAPI.Services.UserService;
+import eci.ieti.taskplannerAPI.utils.StringUtils;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +35,15 @@ public class UserController {
 
         String email = login.getEmail();
         String password = login.getPassword();
-        User user = service.getUser(email, password);
+        User user = service.getUser(email);
 
         if (user == null) {
             throw new ServletException("User email not found.");
         }
 
-        String pwd = user.getPassword();
+        String passwordHash = user.getPassword();
 
-        if (!password.equals(pwd)) {
+        if (!StringUtils.isPasswordValid(password, passwordHash)) {
             throw new ServletException("Invalid login. Please check your email and password.");
         }
         //
